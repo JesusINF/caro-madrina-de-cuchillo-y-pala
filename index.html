@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f3f1eb">
+    <meta name="description" content="Una invitación especial para Caro: ¿aceptas ser nuestra madrina de cuchillo y pala?">
+    <title>Caro, ¿aceptas? | Una invitación especial</title>
+    <link rel="icon" href="data:,">
+    <link rel="preload" href="assets/templo-transparente.png" as="image" type="image/png" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero__art" data-svg-reveal>
+          <span class="visually-hidden" id="hero-art-alt">La fachada del Santuario del Señor de La Piedad, junto a un cuchillo y una pala de plata.</span>
+          <svg class="hero__image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="hero-art-alt" focusable="false">
+            <defs>
+              <path id="cutlery-drift" d="M 0 0 C 22 -28 66 -31 91 -5 C 116 21 96 43 58 39 C 27 37 16 19 0 0" fill="none" stroke="none"></path>
+            </defs>
+            <g class="hero__scene-layer">
+              <image class="hero__scene" href="assets/templo-transparente.png" x="0" y="0" width="1000" height="1000" preserveAspectRatio="xMidYMid meet">
+                <animate attributeName="opacity" from="0.82" to="1" dur="850ms" begin="indefinite" fill="freeze"></animate>
+                <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1.025" to="1" dur="1500ms" begin="indefinite" fill="freeze"></animateTransform>
+              </image>
+            </g>
+            <image class="hero__cutlery" href="assets/cuchillo-pala-transparente.png" x="692" y="674" width="240" height="150" preserveAspectRatio="xMidYMid meet">
+              <animateMotion dur="6s" repeatCount="indefinite" begin="indefinite">
+                <mpath href="#cutlery-drift"></mpath>
+              </animateMotion>
+            </image>
+          </svg>
+        </div>
+
+        <div class="hero__content">
+          <p class="eyebrow hero__eyebrow">Una invitación hecha para ti</p>
+          <h1 id="hero-title">Caro, ¿aceptas ser nuestra <em>madrina de cuchillo y pala?</em></h1>
+          <a class="text-link hero__link" href="#historia">Descubre por qué pensamos en ti</a>
+        </div>
+        <p class="hero__scroll" aria-hidden="true">Sigue leyendo</p>
+      </section>
+
+      <section class="story" id="historia" aria-labelledby="story-title" data-reveal>
+        <p class="eyebrow">Un lugar muy especial</p>
+        <h2 id="story-title">Hay detalles que se sienten más bonitos cuando se comparten.</h2>
+        <p class="story__body">Queremos invitarte a ser parte de nuestra celebración como madrina de cuchillo y pala. Nos hace mucha ilusión que este gesto lleve tu nombre y tu cariño.</p>
+      </section>
+
+      <section class="promise" aria-labelledby="promise-title" data-reveal>
+        <div class="promise__copy">
+          <p class="eyebrow">De corazón</p>
+          <h2 id="promise-title">Nos encantaría tenerte cerca en este día.</h2>
+          <p>Tu presencia hará aún más especial un momento que queremos guardar para siempre.</p>
+        </div>
+      </section>
+
+      <section class="occasion" aria-labelledby="occasion-title" data-reveal>
+        <p class="eyebrow">Guarda la fecha</p>
+        <h2 id="occasion-title"><time datetime="2027-01-23">23 de enero de 2027</time></h2>
+        <p class="occasion__place">La Piedad, Michoacán</p>
+      </section>
+
+      <section class="answer" aria-labelledby="answer-title">
+        <div class="answer__content" data-reveal>
+          <p class="eyebrow">Con mucho cariño</p>
+          <h2 id="answer-title">Caro, ¿nos acompañas?</h2>
+          <p>Nos haría muy felices contar contigo como nuestra madrina de cuchillo y pala.</p>
+          <button class="accept-button" id="accept-trigger" type="button" disabled>
+            Acepto con mucho cariño
+          </button>
+          <button class="retry-button" id="retry-connection" type="button" hidden>Reintentar conexión</button>
+          <p class="connection-status" id="connection-status" role="status" aria-live="polite">Preparando tu invitación…</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><p>Una invitación hecha con cariño, para Caro.</p></footer>
+
+    <dialog class="confirm-dialog" id="confirm-dialog" aria-labelledby="dialog-title">
+      <form method="dialog" class="confirm-dialog__panel">
+        <button class="dialog-close" value="cancel" aria-label="Cerrar confirmación" type="submit">Cerrar</button>
+        <p class="eyebrow">Tu respuesta</p>
+        <h2 id="dialog-title">¿Confirmas que aceptas?</h2>
+        <p>Tu respuesta se guardará una sola vez para esta invitación.</p>
+        <button class="confirm-button" id="confirm-accept" value="default" type="button">Sí, acepto ser madrina</button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
