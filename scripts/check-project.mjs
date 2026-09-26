@@ -11,13 +11,13 @@ const [html, app, rules, styles, workflow, artwork, artworkInfo] = await Promise
   read("firestore.rules"),
   read("styles.css"),
   read(".github/workflows/pages.yml"),
-  readFile(path.join(root, "assets/cuchillo-pala-invitacion-v2.webp")),
-  stat(path.join(root, "assets/cuchillo-pala-invitacion-v2.webp"))
+  readFile(path.join(root, "assets/cubiertos-papercraft-v1.webp")),
+  stat(path.join(root, "assets/cubiertos-papercraft-v1.webp"))
 ]);
 
 const checks = [
   ["Invitation copy, role, and CTA remain semantic HTML", html.includes("Caro") && html.includes("Madrina de cuchillo y pala") && html.includes('id="accept-trigger"')],
-  ["Inline SVG layers the final sanctuary PNG and optimized WebP", html.includes('href="assets/templo-transparente.png"') && html.includes('href="assets/cuchillo-pala-invitacion-v2.webp"') && !html.includes('href="assets/cuchillo-pala-transparente.png"')],
+  ["Inline SVG layers transparent papercraft sanctuary and utensils WebP assets", html.includes('href="assets/santuario-papercraft-v1.webp"') && html.includes('href="assets/cubiertos-papercraft-v1.webp"') && !html.includes('href="assets/cuchillo-pala-transparente.png"')],
   ["SVG contains no hand-drawn paths or text artwork", !/<(?:path|text)\b/i.test(html)],
   ["Date and venue are present in semantic HTML", html.includes('datetime="2027-01-23"') && html.includes("La Piedad,") && html.includes("Michoacán")],
   ["Only one invitation acceptance CTA is present", (html.match(/id="accept-trigger"/g) ?? []).length === 1 && (html.match(/id="confirm-accept"/g) ?? []).length === 1],

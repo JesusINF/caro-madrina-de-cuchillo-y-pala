@@ -100,7 +100,9 @@ a { color: inherit; }
   height: clamp(14rem, 38svh, 24rem);
   margin: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #dce8ed 0%, #d4e2e7 74%, #e7e9e4 100%);
+  background:
+    radial-gradient(ellipse at 52% 42%, rgb(255 253 248 / 58%) 0%, rgb(255 253 248 / 0%) 58%),
+    linear-gradient(180deg, #dce8ed 0%, #d4e2e7 74%, #e7e9e4 100%);
   animation: art-entrance 850ms var(--ease-out) both;
 }
 

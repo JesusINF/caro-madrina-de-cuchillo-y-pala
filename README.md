@@ -4,8 +4,7 @@ Invitación estática, mobile-first y preparada para GitHub Pages. La composici�
 
 ## Arte y movimiento
 
-- `assets/templo-transparente.png` es un recorte transparente del Santuario del Señor de La Piedad, generado con OpenAI ImageGen a partir de la referencia visual de su fachada.
-- `assets/cuchillo-pala-invitacion-v2.webp` representa un cuchillo para pastel y una pala de plata grabada. Se generó con OpenAI ImageGen; el recorte PNG transparente se optimizó a WebP en 1024 × 1536 px conservando el canal alfa. El prompt pidió los dos utensilios aislados, ornamentación grabada y sin fondo, texto ni manos.
+- `assets/santuario-papercraft-v1.webp` y `assets/cubiertos-papercraft-v1.webp` son recortes transparentes de IA con acabado de cartulina en capas. El templo conserva su torre frontal izquierda y la cúpula azul con paneles dorados; el cuchillo y la pala mantienen sus siluetas completas.
 - El SVG inline solo posiciona esas imágenes mediante elementos `<image>`; no redibuja arte. La capa conjunta tiene movimiento de desplazamiento ligado al timeline de scroll nativo de CSS, sin listener de scroll por frame. La historia usa `IntersectionObserver` de una sola entrada; `prefers-reduced-motion` elimina los movimientos.
 
 ## Publicar en GitHub Pages
