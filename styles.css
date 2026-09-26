@@ -99,7 +99,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid #8ba5bd; outline-offs
 .hero h1 em { font-weight: 400; }
 
 .hero__link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
   margin-top: 1.8rem;
   padding-block: .45rem;
   color: var(--blue);
