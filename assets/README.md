@@ -1,8 +1,7 @@
-# Recortes transparentes de portada
+# Arte de la invitación
 
-Imágenes PNG transparentes generadas con IA y usadas dentro del SVG inline:
+- `templo-transparente.png`: recorte transparente de la fachada del Santuario del Señor de La Piedad, generado con OpenAI ImageGen.
+- `cuchillo-pala-invitacion-v2.webp`: cuchillo para pastel y pala de plata grabada, generados con OpenAI ImageGen. Prompt resumido: dos utensilios ceremoniales ornamentados, aislados, sin fondo, letras ni manos. El recorte PNG transparente se optimizó a WebP de 1024 × 1536 px preservando alfa.
+- `cuchillo-pala-invitacion-v2.png` y `cuchillo-pala-transparente.png`: variantes PNG heredadas conservadas; la portada actual usa el WebP optimizado.
 
-- `templo-transparente.png`: fachada del Santuario del Señor de La Piedad, con campanario a la izquierda y cúpula dorada a la derecha.
-- `cuchillo-pala-transparente.png`: recorte combinado de cuchillo y pala.
-
-El texto y los botones permanecen en HTML; el SVG solo compone y anima las imágenes generadas.
+La página compone los recortes con elementos `<image>` dentro del SVG inline. El movimiento del grupo está ligado al timeline de scroll nativo de CSS y se desactiva cuando el sistema solicita movimiento reducido; no se redibujan las imágenes ni se registra un listener de scroll por frame.

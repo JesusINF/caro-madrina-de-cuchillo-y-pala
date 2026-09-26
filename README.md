@@ -1,19 +1,23 @@
 # Invitación para Caro
 
-Invitación estática, mobile-first y lista para GitHub Pages. La portada usa dos recortes transparentes generados con IA: `assets/templo-transparente.png` (fachada reconocible del Santuario del Señor de La Piedad) y `assets/cuchillo-pala-transparente.png`. El SVG solo dispone y anima esos recortes; el texto y los controles son HTML.
+Invitación estática, mobile-first y preparada para GitHub Pages. La composición toma como referencia el lenguaje de papel recortado de Mary y Everardo: cielo azul niebla, hoja marfil, acentos blush y salvia, tipografía borgoña y un toque dorado. Cormorant Garamond y Manrope se sirven como fuentes locales.
 
-La integración disponible de `@app-6a3293e129088191abf0875820e839da` solo ofrece el flujo `website-builder-flow` y sus modelos de generación declaran salida `image`, no `svg`. Por eso el arte se conserva como raster transparente dentro del SVG inline, sin redibujar las imágenes con vectores. El único `<path>` es una trayectoria invisible (`fill="none"`, `stroke="none"`) para animar el recorte de cubiertos.
+## Arte y movimiento
+
+- `assets/templo-transparente.png` es un recorte transparente del Santuario del Señor de La Piedad, generado con OpenAI ImageGen a partir de la referencia visual de su fachada.
+- `assets/cuchillo-pala-invitacion-v2.webp` representa un cuchillo para pastel y una pala de plata grabada. Se generó con OpenAI ImageGen; el recorte PNG transparente se optimizó a WebP en 1024 × 1536 px conservando el canal alfa. El prompt pidió los dos utensilios aislados, ornamentación grabada y sin fondo, texto ni manos.
+- El SVG inline solo posiciona esas imágenes mediante elementos `<image>`; no redibuja arte. La capa conjunta tiene movimiento de desplazamiento ligado al timeline de scroll nativo de CSS, sin listener de scroll por frame. La historia usa `IntersectionObserver` de una sola entrada; `prefers-reduced-motion` elimina los movimientos.
 
 ## Publicar en GitHub Pages
 
-El sitio se publica desde `JesusINF/caro-madrina-de-cuchillo-y-pala` con **GitHub Actions** al hacer push a `main` o al ejecutarlo manualmente desde **Actions**.
+El workflow de `.github/workflows/pages.yml` publica desde GitHub Actions al hacer push a `main` o al ejecutarlo manualmente desde **Actions**. Este trabajo no inicializó ni publicó un repositorio.
 
 ## Respuesta y Firebase
 
-Al confirmar, la página inicia sesión anónima y envía una sola creación para `responses/caro-cuchillo-pala`. No consulta documentos. `firestore.rules` conserva las reglas desplegadas de Mary/Everardo y Felipe, y añade ambas invitaciones nuevas con creación única; no habilita lecturas, cambios ni borrados. Las reglas de Gaby y Caro aún deben publicarse en Firebase para que esas respuestas se guarden. Para aceptar respuestas, Anonymous Auth debe estar habilitado. El `localStorage` solo mejora la experiencia en ese navegador: la regla de Firestore es la que impide una segunda respuesta.
+Al confirmar, la invitación inicia sesión anónima y realiza una sola creación en `responses/caro-cuchillo-pala`, con los campos de aceptación, fecha del servidor, identificador, destinataria y UID anónimo. No consulta documentos. El archivo de reglas existente permanece sin cambios y conserva Mary/Everardo, Felipe, Gaby, la creación única de Caro y denegación predeterminada. No se desplegaron reglas desde este trabajo; Anonymous Auth debe estar habilitado para aceptar respuestas.
 
-El archivo `firebase-config.js` se reutiliza del proyecto Firebase compartido. Es configuración cliente pública, no una clave privada.
+`localStorage` solo recuerda la respuesta en ese navegador; la regla de Firestore es la que impide cambios o respuestas duplicadas. `firebase-config.js` es configuración cliente pública del proyecto Firebase compartido, no una clave privada.
 
-## Comprobación local
+## Comprobaciones
 
-Con Node.js instalado, ejecuta `npm run check` para revisar sintaxis y las referencias esenciales del sitio.
+Con Node.js instalado, ejecuta `npm run check` para validar sintaxis y los contratos estáticos esenciales. La revisión visual adicional cubre 320, 360, 390, 768 y 1280 px.

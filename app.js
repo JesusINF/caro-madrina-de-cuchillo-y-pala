@@ -125,17 +125,6 @@ dialog.addEventListener("click", (event) => {
 });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const heroArt = document.querySelector("[data-svg-reveal]");
-const heroAnimations = document.querySelectorAll(".hero__image animate, .hero__image animateTransform, .hero__image animateMotion");
-if (!reducedMotion && "IntersectionObserver" in window && heroArt) {
-  const heroObserver = new IntersectionObserver((entries, observer) => {
-    if (!entries.some((entry) => entry.isIntersecting)) return;
-    heroAnimations.forEach((animation) => animation.beginElement?.());
-    observer.disconnect();
-  }, { threshold: 0.15 });
-  heroObserver.observe(heroArt);
-}
-
 if ("IntersectionObserver" in window && !reducedMotion) {
   document.documentElement.classList.add("has-motion");
   const revealObserver = new IntersectionObserver((entries, observer) => {
